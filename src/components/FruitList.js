@@ -2,42 +2,88 @@ import React from 'react';
 import fruits from '../data/fruits';
 import { useFruitHandler } from '../hooks/useFruitHandler';
 
+import styled from 'styled-components';
+
+const StyledFruitList = styled.div`
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+`
+const StyledFruitRow = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+`
+
+const Column = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    border-style: groove;
+
+`
+
+const ColumnNumber = styled(Column)`
+    flex: 0 0 3rem;
+`
+
+const Button = styled.button`
+    height: ${props => props.reset ? "100%" : "50%"};
+
+    font-size: 1em;
+    height: 50%
+
+`;
+
 export const FruitList = () => {
 
     const { fruitList, handleUp, handleDown, reset } = useFruitHandler( fruits );
 
     return (
-        <div>
+        <StyledFruitList>
             {
                 fruitList.map( 
                     ( info, index ) => (
 
-                        <div key={ info.id }>
+                        <StyledFruitRow key={ info.id }>
 
-                            <h3>{ index }</h3>
-                            <h3>{ info.name }</h3>
+                            <ColumnNumber>
+                                <p>{ info.id }</p>
+                            </ColumnNumber>
 
-                            <button
-                                onClick={ () => handleUp( index )  }
-                            >
-                                UP
-                            </button>
-                            <button
-                                onClick={ () => handleDown( index ) }
-                            >
-                                DOWN
-                            </button>
+                            <Column>
+                                <h3>{ info.name }</h3>
+                            </Column>
+                           
+                            <Column>
+                                <Button 
+                                    onClick={ () => handleUp( index )  }
+                                >
+                                    ▲
+                                </Button>
+                                <Button 
+                                    onClick={ () => handleDown( index ) }
+                                >
+                                    ▼
+                                </Button>
+                            </Column>
                         
-                        </div>
+                        </StyledFruitRow>
                     )
                 )
             }
 
-            <button
+            <Button reset
                 onClick={ reset }
             >
                 Reset
-            </button>
-        </div>
+            </Button>
+        </StyledFruitList>
     )
 }
