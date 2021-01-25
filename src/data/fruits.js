@@ -5,7 +5,7 @@ const fruits = [
     },
     {
         id: 2,
-       name: 'Lemon'
+        name: 'Lemon'
     },
     {
         id: 3,
