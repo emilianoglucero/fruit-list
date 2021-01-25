@@ -11,7 +11,6 @@ const StyledFruitList = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
 `
 const StyledFruitRow = styled.div`
     display: flex;
@@ -26,7 +25,6 @@ const Column = styled.div`
     flex-basis: 100%;
     flex: 1;
     border-style: groove;
-
 `
 
 const ColumnNumber = styled(Column)`
@@ -37,8 +35,6 @@ const Button = styled.button`
     height: ${props => props.reset ? "100%" : "50%"};
 
     font-size: 1em;
-    height: 50%
-
 `;
 
 export const FruitList = () => {

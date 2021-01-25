@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import fruits from '../data/fruits';
+import PropTypes from 'prop-types';
 
 export const useFruitHandler = ( initialFruitList =  { fruits }  ) => {
     
@@ -34,7 +35,7 @@ export const useFruitHandler = ( initialFruitList =  { fruits }  ) => {
         if (index < fruitList.length - 1 ) {
 
             const indexFruitToSwap = index + 1;
-            
+
             /**  
             * If we want to use arrays or objects in our React state, 
             * we have to create a copy of the value before modifying it
@@ -64,3 +65,10 @@ export const useFruitHandler = ( initialFruitList =  { fruits }  ) => {
     };
 
 }
+
+useFruitHandler.propTypes = {
+    initialFruitList: PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string
+    })
+};
